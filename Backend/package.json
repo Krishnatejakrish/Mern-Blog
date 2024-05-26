@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "client":"npm run dev --prefix Frontend",
+    "devs": "concurrently \"npm run dev\" \"npm run dev --prefix ../Frontend\""
   },
   "keywords": [],
   "author": "",
@@ -24,5 +26,8 @@
     "nodemailer": "^6.9.13",
     "nodemon": "^3.1.0",
     "stripe": "^15.7.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
