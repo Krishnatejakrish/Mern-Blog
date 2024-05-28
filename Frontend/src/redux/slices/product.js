@@ -7,7 +7,8 @@ export const initialState = {
   products: [],
   product: null,
   pagination: {},
-  favouritesToggled: true,
+  favoritesToggled: true,
+  favorites: JSON.parse(localStorage.getItem('favorites'))??[] // we use double question mark like either that or this 
 };
 export const productsSlice = createSlice({
   name: "products",
@@ -30,11 +31,17 @@ export const productsSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.pagination=payload;
+    },
+    setFavorites :(state,{payload})=>{
+      state.favorites= payload
+    },
+    setFavoritesToggle : (state,{payload})=>{
+      state.favoritesToggled=payload
     }
   },
 });
 
-export const {setLoading,setError,setProducts,setPagination} = productsSlice.actions
+export const {setLoading,setError,setProducts,setPagination,setFavorites,setFavoritesToggle} = productsSlice.actions
 
 
 export default productsSlice.reducer;
